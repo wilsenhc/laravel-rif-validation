@@ -1,0 +1,12 @@
+{
+    "name": "wilsenhc/laravel-validar-rif",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Wilsen Hernández",
+            "email": "wilsenforwork@gmail.com"
+        }
+    ],
+    "require": {}
+}
