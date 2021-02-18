@@ -1,12 +1,27 @@
 {
     "name": "wilsenhc/laravel-validar-rif",
-    "type": "library",
+    "description": "Regla de Validación para conocer si un RIF (Registro Único de Información Fiscal) está bien formado",
+    "keywords": [
+        "wilsenhc",
+        "seniat",
+        "rif",
+        "laravel-validar-rif"
+    ],
     "license": "MIT",
     "authors": [
         {
             "name": "Wilsen Hernández",
-            "email": "wilsenforwork@gmail.com"
+            "email": "wilsenforwork@gmail.com",
+            "role": "Developer"
         }
     ],
-    "require": {}
+    "require": {
+        "php": "^7.3|^8.0",
+        "illuminate/support": "8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Wilsenhc\\ValidarRif\\": "src"
+        }
+    }
 }
