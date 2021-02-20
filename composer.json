@@ -35,6 +35,11 @@
             "Wilsenhc\\RifValidation\\Tests\\": "tests"
         }
     },
+    "extra": {
+        "laravel" : {
+            "providers" : [
+                "Wilsenhc\\RifValidation\\RifValidationServiceProvider"
+            ]
         }
     }
 }
