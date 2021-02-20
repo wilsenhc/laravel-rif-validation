@@ -1,6 +1,6 @@
 <?php
 
-namespace Wilsenhc\ValidarRif\Rules;
+namespace Wilsenhc\RifValidation\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 

@@ -1,10 +1,11 @@
 {
-    "name": "wilsenhc/laravel-validar-rif",
+    "name": "wilsenhc/laravel-rif-validation",
     "description": "Regla de Validación para conocer si un RIF (Registro Único de Información Fiscal) está bien formado",
     "keywords": [
         "wilsenhc",
         "seniat",
         "rif",
+        "laravel-rif-validation",
         "laravel-validar-rif"
     ],
     "license": "MIT",
@@ -26,10 +27,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Wilsenhc\\ValidarRif\\": "src"
+            "Wilsenhc\\RifValidation\\": "src"
+        }
+    },
     "autoload-dev": {
         "psr-4": {
-            "Wilsenhc\\ValidarRif\\Tests\\": "tests"
+            "Wilsenhc\\RifValidation\\Tests\\": "tests"
         }
     },
         }
