@@ -40,6 +40,8 @@ class Rif implements Rule
      */
     public function message(): string
     {
-        return 'El RIF no es válido';
+        return __('validateRif::messages.rif', [
+            'attribute' => $this->attribute,
+        ]);
     }
 }
