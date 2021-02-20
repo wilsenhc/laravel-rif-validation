@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'rif' => 'El RIF es inválido.'
+    'rif' => 'El RIF es inválido.',
 ];
