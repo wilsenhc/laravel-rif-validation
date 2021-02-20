@@ -20,9 +20,18 @@
         "illuminate/support": "^8.0",
         "illuminate/contracts": "^8.0"
     },
+    "require-dev": {
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.5"
+    },
     "autoload": {
         "psr-4": {
             "Wilsenhc\\ValidarRif\\": "src"
+    "autoload-dev": {
+        "psr-4": {
+            "Wilsenhc\\ValidarRif\\Tests\\": "tests"
+        }
+    },
         }
     }
 }
