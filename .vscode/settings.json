@@ -1,0 +1,7 @@
+{
+    "editor.renderWhitespace": "boundary",
+    "editor.rulers": [
+        80
+    ],
+    "files.trimTrailingWhitespace": true
+}

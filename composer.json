@@ -1,6 +1,6 @@
 {
     "name": "wilsenhc/laravel-rif-validation",
-    "description": "Regla de Validación para conocer si un RIF (Registro Único de Información Fiscal) está bien formado",
+    "description": "A Validation rule to check if a RIF is valid",
     "keywords": [
         "wilsenhc",
         "seniat",
@@ -44,5 +44,7 @@
                 "Wilsenhc\\RifValidation\\RifValidationServiceProvider"
             ]
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
