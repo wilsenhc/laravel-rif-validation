@@ -49,5 +49,28 @@ class RifTest extends TestCase
 
         $this->assertTrue($this->rule->passes('rif', $rif));
     }
+
+    /** @test */
+    public function it_will_return_false_if_format_is_invalid()
+    {
+        // Starts with a RIF Type that doesn't exist
+        $rif = 'Q-00000000-0';
+
+        $this->assertFalse($this->rule->passes('rif', $rif));
+
+        // Extra number
+        $rif = 'G-200000041-4';
+
+        $this->assertFalse($this->rule->passes('rif', $rif));
+
+        // Missing numbers
+        $rif = 'V-5892464';
+
+        $this->assertFalse($this->rule->passes('rif', $rif));
+
+        // Letter where there should be only numbers
+        $rif = 'G-200F00041-F';
+
+        $this->assertFalse($this->rule->passes('rif', $rif));
     }
 }
