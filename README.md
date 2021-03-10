@@ -4,6 +4,7 @@
 ![Tests](https://github.com/wilsenhc/laravel-rif-validation/actions/workflows/run-tests.yml/badge.svg)
 [![Total Downloads](https://img.shields.io/packagist/dt/wilsenhc/laravel-rif-validation.svg?style=flat-square)](https://packagist.org/packages/wilsenhc/laravel-rif-validation)
 
+This package provides rules to validate a RIF (Registro Único de Información Fiscal).
 
 ## Installation
 
