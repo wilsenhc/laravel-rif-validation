@@ -3,6 +3,7 @@
 namespace Wilsenhc\RifValidation\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Support\Str;
 
 class Rif implements Rule
 {
@@ -39,6 +40,8 @@ class Rif implements Rule
     public function passes($attribute, $value): bool
     {
         $this->attribute = $attribute;
+
+        $value = Str::upper($value);
 
         // Verificar si el RIF tiene el formato valido
         if (!preg_match('/^[VEPJGC]-?[\d]{8}-?[\d]$/i', $value))
