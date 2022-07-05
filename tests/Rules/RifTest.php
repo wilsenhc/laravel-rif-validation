@@ -73,4 +73,23 @@ class RifTest extends TestCase
 
         $this->assertFalse($this->rule->passes('rif', $rif));
     }
+
+    /** @test */
+    public function it_will_convert_values_to_uppercase_before_testing()
+    {
+        // Valid RIF of "Universidad de Carabobo"
+        $rif = 'g-20000041-4';
+
+        $this->assertTrue($this->rule->passes('rif', $rif));
+
+        // Valid RIF of "Banesco Banco Universal"
+        $rif = 'j-07013380-5';
+
+        $this->assertTrue($this->rule->passes('rif', $rif));
+
+        // Valid RIF of "Nicolas Maduro Moros"
+        $rif = 'v-05892464-0';
+
+        $this->assertTrue($this->rule->passes('rif', $rif));
+    }
 }
