@@ -36,6 +36,17 @@ This validation rule will pass if the RIF value passed in the request is valid.
 
 ```php
 // in a `FormRequest`
+public function rules()
+{
+    return [
+        'rif' => 'required|rif',
+    ];
+}
+```
+You can also import the `Rif` Rule class and use it instead
+
+```php
+// in a `FormRequest`
 
 use Wilsenhc\RifValidation\Rules\Rif;
 
