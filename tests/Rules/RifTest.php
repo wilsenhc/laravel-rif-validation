@@ -15,6 +15,11 @@ class RifTest extends TestCase
     protected $rule;
 
     /**
+     * @var  \Illuminate\Validation\Factory  $validator
+     */
+    protected $validator;
+
+    /**
      * Setup the test environment.
      */
     protected function setUp(): void
@@ -22,6 +27,8 @@ class RifTest extends TestCase
         parent::setUp();
 
         $this->rule = new Rif();
+
+        $this->validator = $this->app['validator'];
     }
 
     protected function getPackageProviders($app)
@@ -91,5 +98,49 @@ class RifTest extends TestCase
         $rif = 'v-05892464-0';
 
         $this->assertTrue($this->rule->passes('rif', $rif));
+    }
+
+    /** @test */
+    public function it_will_validate_using_class()
+    {
+        // Valid RIF of "Universidad de Carabobo"
+        $this->assertTrue($this->validator->make(
+           ['rif' => 'G-20000041-4'],
+           ['rif' => new Rif],
+        )->passes());
+
+        // Valid RIF of "Banesco Banco Universal"
+        $this->assertTrue($this->validator->make(
+            ['rif' => 'J-07013380-5'],
+            ['rif' => new Rif],
+        )->passes());
+
+        // Valid RIF of "Nicolas Maduro Moros"
+        $this->assertTrue($this->validator->make(
+            ['rif' => 'V-05892464-0'],
+            ['rif' => new Rif],
+        )->passes());
+    }
+
+    /** @test */
+    public function it_will_validate_using_shortname()
+    {
+        // Valid RIF of "Universidad de Carabobo"
+        $this->assertTrue($this->validator->make(
+           ['rif' => 'G-20000041-4'],
+           ['rif' => 'rif'],
+        )->passes());
+
+        // Valid RIF of "Banesco Banco Universal"
+        $this->assertTrue($this->validator->make(
+            ['rif' => 'J-07013380-5'],
+            ['rif' => 'rif'],
+        )->passes());
+
+        // Valid RIF of "Nicolas Maduro Moros"
+        $this->assertTrue($this->validator->make(
+            ['rif' => 'V-05892464-0'],
+            ['rif' => 'rif'],
+        )->passes());
     }
 }
