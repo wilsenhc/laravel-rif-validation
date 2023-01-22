@@ -30,6 +30,9 @@ jobs:
             laravel: 8.*
             dependency-version: prefer-lowest
           - php: 8.2
+            laravel: 9.*
+            dependency-version: prefer-lowest
+          - php: 8.2
             laravel: 8.*
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.dependency-version }} - ${{ matrix.os }}
@@ -54,7 +57,7 @@ jobs:
       - name: Install dependencies
         run: |
           composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
-          composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction
+          composer update --${{ matrix.dependency-version }} --no-interaction
 
       - name: Execute tests
         run: vendor/bin/phpunit
