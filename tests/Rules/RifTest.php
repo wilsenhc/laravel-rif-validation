@@ -38,109 +38,104 @@ class RifTest extends TestCase
         ];
     }
 
-    /** @test */
-    public function it_will_return_true_if_rif_is_valid()
+    public function testItWillReturnVoidIfRifIsValid()
     {
         // Valid RIF of "Universidad de Carabobo"
         $rif = 'G-20000041-4';
 
-        $this->assertTrue($this->rule->passes('rif', $rif));
+        $this->assertNull($this->rule->validate('rif', $rif, fn () => null));
 
         // Valid RIF of "Banesco Banco Universal"
         $rif = 'J-07013380-5';
 
-        $this->assertTrue($this->rule->passes('rif', $rif));
+        $this->assertNull($this->rule->validate('rif', $rif, fn () => null));
 
         // Valid RIF of "Nicolas Maduro Moros"
         $rif = 'V-05892464-0';
 
-        $this->assertTrue($this->rule->passes('rif', $rif));
+        $this->assertNull($this->rule->validate('rif', $rif, fn () => null));
     }
 
-    /** @test */
-    public function it_will_return_false_if_format_is_invalid()
+    public function testItWillReturnFalseIfFormatIsInvalid()
     {
         // Starts with a RIF Type that doesn't exist
         $rif = 'Q-00000000-0';
 
-        $this->assertFalse($this->rule->passes('rif', $rif));
+        $this->assertNull($this->rule->validate('rif', $rif, fn ($value) => $this->assertNotNull($value)));
 
         // Extra number
         $rif = 'G-200000041-4';
 
-        $this->assertFalse($this->rule->passes('rif', $rif));
+        $this->assertNull($this->rule->validate('rif', $rif, fn ($value) => $this->assertNotNull($value)));
 
         // Missing numbers
         $rif = 'V-5892464';
 
-        $this->assertFalse($this->rule->passes('rif', $rif));
+        $this->assertNull($this->rule->validate('rif', $rif, fn ($value) => $this->assertNotNull($value)));
 
         // Letter where there should be only numbers
         $rif = 'G-200F00041-F';
 
-        $this->assertFalse($this->rule->passes('rif', $rif));
+        $this->assertNull($this->rule->validate('rif', $rif, fn ($value) => $this->assertNotNull($value)));
     }
 
-    /** @test */
-    public function it_will_convert_values_to_uppercase_before_testing()
+    public function testItWillConvertValuesToUppercaseBeforeTesting()
     {
         // Valid RIF of "Universidad de Carabobo"
         $rif = 'g-20000041-4';
 
-        $this->assertTrue($this->rule->passes('rif', $rif));
+        $this->assertNull($this->rule->validate('rif', $rif, fn () => null));
 
         // Valid RIF of "Banesco Banco Universal"
         $rif = 'j-07013380-5';
 
-        $this->assertTrue($this->rule->passes('rif', $rif));
+        $this->assertNull($this->rule->validate('rif', $rif, fn () => null));
 
         // Valid RIF of "Nicolas Maduro Moros"
         $rif = 'v-05892464-0';
 
-        $this->assertTrue($this->rule->passes('rif', $rif));
+        $this->assertNull($this->rule->validate('rif', $rif, fn () => null));
     }
 
-    /** @test */
-    public function it_will_validate_using_class()
+    public function testItWillValidateUsingClass()
     {
         // Valid RIF of "Universidad de Carabobo"
-        $this->assertTrue($this->validator->make(
+        $this->assertEquals(['rif' => 'G-20000041-4'], $this->validator->make(
            ['rif' => 'G-20000041-4'],
            ['rif' => new Rif],
-        )->passes());
+        )->validate());
 
         // Valid RIF of "Banesco Banco Universal"
-        $this->assertTrue($this->validator->make(
+        $this->assertEquals(['rif' => 'J-07013380-5'], $this->validator->make(
             ['rif' => 'J-07013380-5'],
             ['rif' => new Rif],
-        )->passes());
+        )->validate());
 
         // Valid RIF of "Nicolas Maduro Moros"
-        $this->assertTrue($this->validator->make(
+        $this->assertEquals(['rif' => 'V-05892464-0'], $this->validator->make(
             ['rif' => 'V-05892464-0'],
             ['rif' => new Rif],
-        )->passes());
+        )->validate());
     }
 
-    /** @test */
-    public function it_will_validate_using_shortname()
+    public function testItWillValidateUsingShortname()
     {
         // Valid RIF of "Universidad de Carabobo"
-        $this->assertTrue($this->validator->make(
+        $this->assertEquals(['rif' => 'G-20000041-4'], $this->validator->make(
            ['rif' => 'G-20000041-4'],
            ['rif' => 'rif'],
-        )->passes());
+        )->validate());
 
         // Valid RIF of "Banesco Banco Universal"
-        $this->assertTrue($this->validator->make(
+        $this->assertEquals(['rif' => 'J-07013380-5'], $this->validator->make(
             ['rif' => 'J-07013380-5'],
             ['rif' => 'rif'],
-        )->passes());
+        )->validate());
 
         // Valid RIF of "Nicolas Maduro Moros"
-        $this->assertTrue($this->validator->make(
+        $this->assertEquals(['rif' => 'V-05892464-0'], $this->validator->make(
             ['rif' => 'V-05892464-0'],
             ['rif' => 'rif'],
-        )->passes());
+        )->validate());
     }
 }
