@@ -38,4 +38,18 @@ class Rif implements ValidationRule
 
         $fail(Str::replace(':attribute', $this->attribute, __('validateRif::messages.rif')));
     }
+
+    /**
+     * Determine if the RIF validation rule passes.
+     *
+     * @param  string  $attribute
+     * @param  mixed  $value
+     * @return bool
+     */
+    public function passes($attribute, $value): bool
+    {
+        $this->attribute = $attribute;
+
+        return $this->validator->isValid($value);
+    }
 }
