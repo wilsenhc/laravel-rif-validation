@@ -17,6 +17,10 @@ class RifValidationServiceProvider extends ServiceProvider
         $this->loadTranslationsFrom(__DIR__.'/../lang/', 'validateRif');
 
         // Register custom validation rule
-        $this->app['validator']->extend('rif', Rif::class . '@passes');
+        $this->app['validator']->extend('rif', function ($attribute, $value, $parameters, $validator) {
+            return (new Rif())->validate($attribute, $value, function ($message) {
+                return $message;
+            });
+        });
     }
 }
