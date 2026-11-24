@@ -20,7 +20,7 @@
         "php": "^8.4",
         "illuminate/support": "^12.0|^13.0",
         "illuminate/contracts": "^12.0|^13.0",
-        "wilsenhc/rif-validation": "^1.0"
+        "wilsenhc/rif-validation": "^1.1"
     },
     "require-dev": {
         "orchestra/testbench": "^10.0|^11.0",
