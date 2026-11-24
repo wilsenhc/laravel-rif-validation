@@ -9,20 +9,20 @@ jobs:
       fail-fast: true
       matrix:
         os: [ubuntu-24.04]
-        php: [8.2, 8.3, 8.4]
-        laravel: [11.*, 12.*]
+        php: [8.4, 8.5, 8.6]
+        laravel: [12.*, 13.*]
         dependency-version: [prefer-lowest, prefer-stable]
         include:
-          - laravel: 11.*
-            testbench: 9.*
           - laravel: 12.*
             testbench: 10.*
+          - laravel: 13.*
+            testbench: 11.*
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.dependency-version }} - ${{ matrix.os }}
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v5
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
